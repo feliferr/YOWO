@@ -1,6 +1,8 @@
 
 # 1- Downloading AVA dataset
 
+echo " ====== 1- Downloading AVA dataset ====="
+
 DATA_DIR="data/ava/videos"
 
 if [[ ! -d "${DATA_DIR}" ]]; then
@@ -14,9 +16,11 @@ for line in $(cat ava_file_names_trainval_v2.1.txt)
 do
   wget https://s3.amazonaws.com/ava-dataset/trainval/$line -P ${DATA_DIR}
 done
-
+echo "Done!"
 
 # 2 - Cut each video from its 15th to 30th minute
+
+echo " ====== 2 - Cut each video from its 15th to 30th minute ====="
 
 IN_DATA_DIR="data/ava/videos"
 OUT_DATA_DIR="data/ava/videos_15min"
@@ -33,9 +37,11 @@ do
     ffmpeg -ss 900 -t 901 -i "${video}" "${out_name}"
   fi
 done
-
+echo "Done!"
 
 # 3 - Extract frames
+
+echo " ====== 3 - Extract frames ====="
 
 IN_DATA_DIR="data/ava/videos_15min"
 OUT_DATA_DIR="data/ava/frames"
@@ -67,6 +73,8 @@ done
 
 # 4 - Download annotations
 
+echo " ====== 4 - Download annotations ====="
+
 DATA_DIR="data/ava/annotations"
 
 if [[ ! -d "${DATA_DIR}" ]]; then
@@ -83,6 +91,8 @@ wget https://research.google.com/ava/download/ava_val_excluded_timestamps_v2.1.c
 
 # 5 - Download "frame lists" (train, val) and put them in the "frame_lists" folder
 
+echo " ====== 5 - Download frame lists (train, val) and put them in the frame_lists folder ====="
+
 DATA_DIR="data/ava/frame_lists"
 
 if [[ ! -d "${DATA_DIR}" ]]; then
@@ -95,6 +105,8 @@ wget https://dl.fbaipublicfiles.com/video-long-term-feature-banks/data/ava/frame
 
 
 # 6 -  Download person boxes (train, val, test) and put them in the annotations folder
+
+echo " ====== 6 -  Download person boxes (train, val, test) and put them in the annotations folder ====="
 
 DATA_DIR="data/ava/annotations"
 
