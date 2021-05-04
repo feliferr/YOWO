@@ -55,7 +55,7 @@ if cfg.TRAIN.RESUME_PATH:
 ####### Test parameters
 # ---------------------------------------------------------------
 
-labelmap, _       = read_labelmap("/usr/home/sut/datasets/AVA/annotations/ava_action_list_v2.2.pbtxt")
+labelmap, _       = read_labelmap("/home/jupyter/experiments/yowo-exp/YOWO/datasets/AVA/annotations/ava_action_list_v2.2.pbtxt")
 num_classes       = cfg.MODEL.NUM_CLASSES
 clip_length		  = cfg.DATA.NUM_FRAMES
 crop_size 		  = cfg.DATA.TEST_CROP_SIZE
@@ -75,7 +75,7 @@ model.eval()
 
 ####### Data preparation and inference 
 # ---------------------------------------------------------------
-video_path = '/usr/home/sut/datasets/AVA/video_done/9Y_l9NsnYE0.mp4'
+video_path = '/home/jupyter/experiments/yowo-exp/YOWO/datasets/AVA/video_done/9Y_l9NsnYE0.mp4'
 cap = cv2.VideoCapture(video_path)
 
 cnt = 1
