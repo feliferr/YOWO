@@ -28,8 +28,8 @@ echo "Done!"
 
 echo " ====== 2 - Cut each video from its 15th to 30th minute ====="
 
-IN_DATA_DIR="data/ava/videos"
-OUT_DATA_DIR="data/ava/videos_15min"
+IN_DATA_DIR="datasets/AVA/videos"
+OUT_DATA_DIR="datasets/AVA/videos_15min"
 
 if [[ ! -d "${OUT_DATA_DIR}" ]]; then
   echo "${OUT_DATA_DIR} doesn't exist. Creating it.";
@@ -49,8 +49,8 @@ echo "Done!"
 
 echo " ====== 3 - Extract frames ====="
 
-IN_DATA_DIR="data/ava/videos_15min"
-OUT_DATA_DIR="data/ava/frames"
+IN_DATA_DIR="datasets/AVA/videos_15min"
+OUT_DATA_DIR="datasets/AVA/frames"
 
 if [[ ! -d "${OUT_DATA_DIR}" ]]; then
   echo "${OUT_DATA_DIR} doesn't exist. Creating it.";
@@ -81,7 +81,7 @@ done
 
 echo " ====== 4 - Download annotations ====="
 
-DATA_DIR="data/ava/annotations"
+DATA_DIR="datasets/AVA/annotations"
 
 if [[ ! -d "${DATA_DIR}" ]]; then
   echo "${DATA_DIR} doesn't exist. Creating it.";
@@ -99,7 +99,7 @@ wget https://research.google.com/ava/download/ava_val_excluded_timestamps_v2.1.c
 
 echo " ====== 5 - Download frame lists (train, val) and put them in the frame_lists folder ====="
 
-DATA_DIR="data/ava/frame_lists"
+DATA_DIR="datasets/AVA/frame_lists"
 
 if [[ ! -d "${DATA_DIR}" ]]; then
   echo "${DATA_DIR} doesn't exist. Creating it.";
@@ -114,7 +114,7 @@ wget https://dl.fbaipublicfiles.com/video-long-term-feature-banks/data/ava/frame
 
 echo " ====== 6 -  Download person boxes (train, val, test) and put them in the annotations folder ====="
 
-DATA_DIR="data/ava/annotations"
+DATA_DIR="datasets/AVA/annotations"
 
 if [[ ! -d "${DATA_DIR}" ]]; then
   echo "${DATA_DIR} doesn't exist. Creating it.";
