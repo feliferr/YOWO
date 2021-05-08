@@ -68,11 +68,15 @@ do
   fi
 
   out_video_dir=${OUT_DATA_DIR}/${video_name}
-  mkdir -p "${out_video_dir}"
 
-  out_name="${out_video_dir}/${video_name}_%06d.jpg"
+  if [[ ! -d "${out_video_dir}" ]]; then
+    echo "${out_video_dir} doesn't exist. Creating it.";
+    mkdir -p "${out_video_dir}"
 
-  ffmpeg -i "${video}" -r 30 -q:v 1 "${out_name}"
+    out_name="${out_video_dir}/${video_name}_%06d.jpg"
+
+    ffmpeg -i "${video}" -r 30 -q:v 1 "${out_name}"
+  fi
 done
 
 
