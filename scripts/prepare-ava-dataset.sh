@@ -3,7 +3,7 @@
 
 echo " ====== 1- Downloading AVA dataset ====="
 
-DATA_DIR="data/ava/videos"
+DATA_DIR="datasets/AVA/videos"
 
 if [[ ! -d "${DATA_DIR}" ]]; then
   echo "${DATA_DIR} doesn't exist. Creating it.";
