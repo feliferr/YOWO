@@ -14,7 +14,13 @@ wget https://s3.amazonaws.com/ava-dataset/annotations/ava_file_names_trainval_v2
 
 for line in $(cat ava_file_names_trainval_v2.1.txt)
 do
-  wget https://s3.amazonaws.com/ava-dataset/trainval/$line -P ${DATA_DIR}
+  FILE=${DATA_DIR}/${line}
+  if test -f "$FILE"; then
+    echo "$FILE alredy exists!"
+  else
+    echo "Downloading file and save it in $FILE"
+    wget https://s3.amazonaws.com/ava-dataset/trainval/$line -P ${DATA_DIR}
+  fi
 done
 echo "Done!"
 
