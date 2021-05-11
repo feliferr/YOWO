@@ -40,7 +40,8 @@ for video in $(ls -A1 -U ${IN_DATA_DIR}/*)
 do
   out_name="${OUT_DATA_DIR}/${video##*/}"
   if [ ! -f "${out_name}" ]; then
-    ffmpeg -ss 900 -t 901 -i "${video}" "${out_name}"
+    #ffmpeg -ss 900 -t 901 -i "${video}" "${out_name}"
+    /usr/bin/ffmpeg -ss 900 -t 901 -i "${video}" "${out_name}"
   fi
 done
 echo "Done!"
@@ -75,7 +76,8 @@ do
 
     out_name="${out_video_dir}/${video_name}_%06d.jpg"
 
-    ffmpeg -i "${video}" -r 30 -q:v 1 "${out_name}"
+    #ffmpeg -i "${video}" -r 30 -q:v 1 "${out_name}"
+    /usr/bin/ffmpeg -i "${video}" -r 30 -q:v 1 "${out_name}"
   fi
 done
 
