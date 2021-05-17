@@ -1,5 +1,5 @@
 TRAIN:
-  RESUME_PATH: ""
+  RESUME_PATH: "/home/jupyter/experiments/yowo-exp/YOWO/backup/ava/yowo_ava_32f_best.pth"
   DATASET: ava  # `ava`, `ucf24` or `jhmdb21`
   BATCH_SIZE: 6
   TOTAL_BATCH_SIZE: 128
