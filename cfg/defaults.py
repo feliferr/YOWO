@@ -3,8 +3,13 @@
 
 """Configs."""
 from fvcore.common.config import CfgNode
-
+import os
 from . import custom_config
+
+# -----------------------------------------------------------------------------
+# YOWO_HOME Path setup
+# -----------------------------------------------------------------------------
+YOWO_HOME=os.environ.get('YOWO_HOME')
 
 # -----------------------------------------------------------------------------
 # Config definition
@@ -569,14 +574,14 @@ _C.AVA = CfgNode()
 
 # Directory path of frames.
 # _C.AVA.FRAME_DIR = "/mnt/fair-flash3-east/ava_trainval_frames.img/"
-_C.AVA.FRAME_DIR = "/home/jupyter/experiments/yowo-exp/YOWO/datasets/AVA/frames/"
+_C.AVA.FRAME_DIR = f"{YOWO_HOME}/datasets/AVA/frames/"
 
 # Directory path for files of frame lists.
 # _C.AVA.FRAME_LIST_DIR = (
 #     "/mnt/vol/gfsai-flash3-east/ai-group/users/haoqifan/ava/frame_list/"
 # )
 _C.AVA.FRAME_LIST_DIR = (
-    "/home/jupyter/experiments/yowo-exp/YOWO/datasets/AVA/frame_lists/"
+    f"{YOWO_HOME}/datasets/AVA/frame_lists/"
 )
 
 # Directory path for annotation files.
@@ -584,7 +589,7 @@ _C.AVA.FRAME_LIST_DIR = (
 #     "/mnt/vol/gfsai-flash3-east/ai-group/users/haoqifan/ava/frame_list/"
 # )
 _C.AVA.ANNOTATION_DIR = (
-    "/home/jupyter/experiments/yowo-exp/YOWO/datasets/AVA/annotations/"
+    f"{YOWO_HOME}/datasets/AVA/annotations/"
 )
 
 # Filenames of training samples list files.
@@ -652,10 +657,10 @@ _C.AVA.IMG_PROC_BACKEND = "cv2"
 # list Dataset options
 # -----------------------------------------------------------------------------
 _C.LISTDATA = CfgNode()
-_C.LISTDATA.BASE_PTH = "/home/jupyter/experiments/yowo-exp/YOWO/datasets/ucf24"
-_C.LISTDATA.TRAIN_FILE = "/home/jupyter/experiments/yowo-exp/YOWO/datasets/ucf24/trainlist.txt"
-_C.LISTDATA.TEST_FILE = "/home/jupyter/experiments/yowo-exp/YOWO/datasets/ucf24/testlist.txt"
-_C.LISTDATA.TEST_VIDEO_FILE = "/home/jupyter/experiments/yowo-exp/YOWO/datasets/ucf24/testlist_video.txt"
+_C.LISTDATA.BASE_PTH = f"{YOWO_HOME}/datasets/ucf24"
+_C.LISTDATA.TRAIN_FILE = f"{YOWO_HOME}/datasets/ucf24/trainlist.txt"
+_C.LISTDATA.TEST_FILE = f"{YOWO_HOME}/datasets/ucf24/testlist.txt"
+_C.LISTDATA.TEST_VIDEO_FILE = f"{YOWO_HOME}/datasets/ucf24/testlist_video.txt"
 _C.LISTDATA.MAX_OBJS = 6
 _C.LISTDATA.CLASS_NAMES = [
     "Basketball", "BasketballDunk", "Biking", "CliffDiving", "CricketBowling", 
