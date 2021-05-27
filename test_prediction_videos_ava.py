@@ -30,10 +30,10 @@ def load_yowo_model(cfg, yowo_home_path):
     model = model.cuda()
     model = nn.DataParallel(model, device_ids=None) # in multi-gpu case
 
-    MODEL_PATH=os.listdir(f"{yowo_home_path}/backup/ava/")[0]
+    model_file=os.listdir(f"{yowo_home_path}/backup/ava/")[0]
     
     #cfg.TRAIN.RESUME_PATH=f"{yowo_home_path}/backup/ava/yowo_ava_32f_best.pth"
-    cfg.TRAIN.RESUME_PATH=MODEL_PATH
+    cfg.TRAIN.RESUME_PATH=f"{yowo_home_path}/backup/ava/{model_file}"
 
     ####### Load resume path if necessary
     # ---------------------------------------------------------------
