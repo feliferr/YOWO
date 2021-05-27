@@ -77,6 +77,10 @@ def detects_and_save(cfg, model, video_path_list, output_path):
         if not os.path.exists(output_tmp_folder):
             os.makedirs(output_tmp_folder)
 
+        total_frames=totalframecount= int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        
+        print(f"Processing video {video_path} with {total_frames} frames")
+
         cnt = 1
         queue = []
         while(cap.isOpened()):
@@ -85,6 +89,9 @@ def detects_and_save(cfg, model, video_path_list, output_path):
             if len(queue) <= 0: # At initialization, populate queue with initial frame
                 for i in range(clip_length):
                     queue.append(frame)
+
+            if frame is None:
+                print(f"Frame {cnt} is None!!!")
 
             # Add the read frame to last and pop out the oldest one
             queue.append(frame)
