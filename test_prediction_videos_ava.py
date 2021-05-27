@@ -72,7 +72,7 @@ def detects_and_save(cfg, model, video_path_list, output_path):
         # frame_width          = int(cv2.CAP_PROP_FRAME_WIDTH)
         # frame_height         = int(cv2.CAP_PROP_FRAME_HEIGHT)
         
-        output_tmp_folder    = f"{output}/{file_name}"
+        output_tmp_folder    = f"{output_path}/{file_name}"
 
         cnt = 1
         queue = []
