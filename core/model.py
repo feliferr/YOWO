@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import numpy as np
+import os
 import torch.nn.functional as F
 from torch.autograd import Variable
 
@@ -21,7 +22,7 @@ class YOWO(nn.Module):
         
         ##### 2D Backbone #####
         if cfg.MODEL.BACKBONE_2D == "darknet":
-            self.backbone_2d = darknet.Darknet("cfg/yolo.cfg")
+            self.backbone_2d = darknet.Darknet(f"{os.environ.get('YOWO_HOME')}/cfg/yolo.cfg")
             num_ch_2d = 425 # Number of output channels for backbone_2d
         else:
             raise ValueError("Wrong backbone_2d model is requested. Please select\
