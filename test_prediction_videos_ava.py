@@ -74,6 +74,9 @@ def detects_and_save(cfg, model, video_path_list, output_path):
         
         output_tmp_folder    = f"{output_path}/{file_name}"
 
+        if not os.path.exists(output_tmp_folder):
+            os.makedirs(output_tmp_folder)
+
         cnt = 1
         queue = []
         while(cap.isOpened()):
@@ -201,7 +204,7 @@ if __name__ == '__main__':
     YOWO_HOME = os.environ.get('YOWO_HOME')
 
     # load videos and paths to be processed
-    video_path_list =[ f"{YOWO_HOME}/videos_to_test/{video_file}" for video_file in os.listdir(f"{YOWO_HOME}/videos_to_test")]
+    video_path_list =[f"{YOWO_HOME}/videos_to_test/{video_file}" for video_file in os.listdir(f"{YOWO_HOME}/videos_to_test")]
     output_path = f"{YOWO_HOME}/output_processed"
     
     # load YOWO model
