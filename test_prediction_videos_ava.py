@@ -78,13 +78,17 @@ def detects_and_save(cfg, model, video_path_list, output_path):
             os.makedirs(output_tmp_folder)
 
         total_frames=totalframecount= int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-        
+
         print(f"Processing video {video_path} with {total_frames} frames")
 
         cnt = 1
         queue = []
         while(cap.isOpened()):
             ret, frame = cap.read()
+
+            # avoid reading empty frame when is the end of video
+            if ret != True:
+                break
 
             if len(queue) <= 0: # At initialization, populate queue with initial frame
                 for i in range(clip_length):
