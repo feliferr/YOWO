@@ -201,7 +201,7 @@ if __name__ == '__main__':
     YOWO_HOME = os.environ.get('YOWO_HOME')
 
     # load videos and paths to be processed
-    video_path_list = os.listdir(f"{YOWO_HOME}/videos_to_test")
+    video_path_list =[ f"{YOWO_HOME}/videos_to_test/{video_file}" for video_file in os.listdir(f"{YOWO_HOME}/videos_to_test")]
     output_path = f"{YOWO_HOME}/output_processed"
     
     # load YOWO model
