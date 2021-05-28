@@ -74,6 +74,9 @@ def detects_and_save(cfg, model, video_path_list, output_path):
         
         output_tmp_folder    = f"{output_path}/{file_name}"
 
+        if extension not in ['mp4', 'mkv', 'web']:
+            continue
+
         if not os.path.exists(output_tmp_folder):
             os.makedirs(output_tmp_folder)
 
@@ -192,18 +195,23 @@ def detects_and_save(cfg, model, video_path_list, output_path):
             cnt += 1
 
         cap.release()
-        cv2.destroyAllWindows()
+        #cv2.destroyAllWindows()
 
-    output_path_final_video = f"{output_path}/{file_name}.mp4"
+    output_path_final_video = f"{output_path}/predicted/{file_name}.mp4"
+
+    if not os.path.exists(output_path_final_video):
+        os.makedirs(output_path_final_video)
 
     cmd_create_video      = f"ffmpeg -framerate {fps} -pattern_type glob -i '{output_tmp_folder}/*.jpg' {output_path_final_video}"
-    cmd_remove_output_tmp = f"rm -rf {output_tmp_folder}"
+   # cmd_remove_output_tmp = f"rm -rf {output_tmp_folder}"
 
-    creation_cmd_result = subprocess.run(cmd_create_video.split(" "))
-    remove_cm_result    = subprocess.run(cmd_remove_output_tmp.split(" "))
+    print(f"Running command: {cmd_create_video}")
+    os.system(cmd_create_video)
+   # creation_cmd_result = subprocess.run(cmd_create_video.split(" "))
+   # remove_cm_result    = subprocess.run(cmd_remove_output_tmp.split(" "))
 
-    print(f"ffmpeg processed with code {creation_cmd_result.returncode}!")
-    print(f"folder {output_tmp_folder} removed with code {remove_cm_result.returncode}!")
+   # print(f"ffmpeg processed with code {creation_cmd_result.returncode}!")
+   # print(f"folder {output_tmp_folder} removed with code {remove_cm_result.returncode}!")
 
 
 
