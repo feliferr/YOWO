@@ -202,7 +202,7 @@ def detects_and_save(cfg, model, video_path_list, output_path):
         if not os.path.exists(output_path_final_video):
             os.makedirs(output_path_final_video)
 
-        cmd_create_video      = f"ffmpeg -framerate {fps} -pattern_type glob -i '{output_tmp_folder}/*.jpg' {output_path_final_video}"
+        cmd_create_video      = f"ffmpeg -framerate {fps} -pattern_type glob -i '{output_tmp_folder}/*.jpg' -y {output_path_final_video}"
         # cmd_remove_output_tmp = f"rm -rf {output_tmp_folder}"
 
         print(f"Running command: {cmd_create_video}")
