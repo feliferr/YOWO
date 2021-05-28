@@ -65,22 +65,22 @@ def detects_and_save(cfg, model, video_path_list, output_path):
 
     for video_path in video_path_list:
 
-        cap = cv2.VideoCapture(video_path)
-
         file_name, extension = video_path.split("/")[-1].split(".")
+
+        if extension not in ['mp4', 'mkv', 'web']:
+            continue
+
+        cap = cv2.VideoCapture(video_path)
         fps                  = cap.get(cv2.CAP_PROP_FPS)
         # frame_width          = int(cv2.CAP_PROP_FRAME_WIDTH)
         # frame_height         = int(cv2.CAP_PROP_FRAME_HEIGHT)
         
         output_tmp_folder    = f"{output_path}/{file_name}"
 
-        if extension not in ['mp4', 'mkv', 'web']:
-            continue
-
         if not os.path.exists(output_tmp_folder):
             os.makedirs(output_tmp_folder)
 
-        total_frames=totalframecount= int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
         print(f"Processing video {video_path} with {total_frames} frames")
 
